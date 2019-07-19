@@ -43,7 +43,7 @@
     },
     "laravel": {
       "providers": [
-        "Someline\\Repository\\SomelineRepositoryServiceProvider"
+        "Someline\\Repository\\LaravelRepositoryServiceProvider"
       ]
     }
   }
