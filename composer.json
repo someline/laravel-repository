@@ -1,0 +1,50 @@
+{
+  "name": "someline/laravel-repository",
+  "description": "Laravel Repository is a good design pattern.",
+  "keywords": [
+    "repository",
+    "service",
+    "laravel-repository",
+    "starter-framework",
+    "someline-starter",
+    "laravel"
+  ],
+  "homepage": "https://github.com/someline/laravel-repository",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Libern Lin",
+      "email": "libernlin@gmail.com",
+      "homepage": "https://www.someline.com/"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "laravel/framework": "5.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "files": [
+    ],
+    "psr-4": {
+      "Someline\\Repository\\": "src/Someline/Repository"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Someline\\Repository\\Test\\": "tests"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Someline\\Repository\\SomelineRepositoryServiceProvider"
+      ]
+    }
+  }
+}
