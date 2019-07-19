@@ -1,4 +1,4 @@
-# Laravel Repository Service
+# Laravel Repository
 
 [![Latest Version](https://img.shields.io/github/release/someline/laravel-repository.svg?style=flat-square)](https://github.com/someline/laravel-repository/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
