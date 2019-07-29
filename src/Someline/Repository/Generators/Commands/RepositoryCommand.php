@@ -19,7 +19,7 @@ class RepositoryCommand extends CommandBase
      *
      * @var string
      */
-    protected $name = 'starter:repository';
+    protected $name = 'make:repository';
 
     /**
      * The description of command.
@@ -64,11 +64,6 @@ class RepositoryCommand extends CommandBase
 
         $this->generators->push($modelGenerator);
 
-        $this->generators->push(new RepositoryInterfaceGenerator([
-            'name'  => $this->argument('name'),
-            'force' => $this->option('force'),
-        ]));
-
         foreach ($this->generators as $generator) {
             $generator->run();
         }
@@ -82,9 +77,6 @@ class RepositoryCommand extends CommandBase
         try {
             (new RepositoryEloquentGenerator([
                 'name'      => $this->argument('name'),
-                'rules'     => $this->option('rules'),
-                'validator' => $this->option('validator'),
-                'presenter' => $this->option('presenter'),
                 'force'     => $this->option('force'),
                 'model'     => $model
             ]))->run();
@@ -128,27 +120,6 @@ class RepositoryCommand extends CommandBase
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'The fillable attributes.',
-                null
-            ],
-            [
-                'rules',
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'The rules of validation attributes.',
-                null
-            ],
-            [
-                'validator',
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'Adds validator reference to the repository.',
-                null
-            ],
-            [
-                'presenter',
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'Adds presenter reference to the repository.',
                 null
             ],
             [

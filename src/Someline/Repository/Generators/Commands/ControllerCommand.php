@@ -16,7 +16,7 @@ class ControllerCommand extends CommandBase
      *
      * @var string
      */
-    protected $name = 'starter:controller';
+    protected $name = 'make:controller';
 
     /**
      * The description of command.
@@ -41,15 +41,6 @@ class ControllerCommand extends CommandBase
     public function fire()
     {
         try {
-            // Generate create request for controller
-            $this->call('make:request', [
-                'name' => $this->argument('name') . 'CreateRequest'
-            ]);
-            // Generate update request for controller
-            $this->call('make:request', [
-                'name' => $this->argument('name') . 'UpdateRequest'
-            ]);
-
             (new ControllerGenerator([
                 'name' => $this->argument('name'),
                 'force' => $this->option('force'),

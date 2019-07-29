@@ -14,7 +14,7 @@ class EntityCommand extends CommandBase
      *
      * @var string
      */
-    protected $name = 'starter:entity';
+    protected $name = 'make:entity';
 
     /**
      * The description of command.
@@ -37,31 +37,6 @@ class EntityCommand extends CommandBase
     public function fire()
     {
 
-        $presenter = $this->option('presenter');
-        if (is_null($presenter) && $this->confirm('Would you like to create a Presenter? [y|N]')) {
-            $presenter = 'yes';
-        }
-
-        if ($presenter == 'yes') {
-            $this->call('starter:presenter', [
-                'name' => $this->argument('name'),
-                '--force' => $this->option('force'),
-            ]);
-        }
-
-        $validator = $this->option('validator');
-        if (is_null($validator) && $this->confirm('Would you like to create a Validator? [y|N]')) {
-            $validator = 'yes';
-        }
-
-        if ($validator == 'yes') {
-            $this->call('starter:validator', [
-                'name' => $this->argument('name'),
-                '--rules' => $this->option('rules'),
-                '--force' => $this->option('force'),
-            ]);
-        }
-
         if ($this->confirm('Would you like to create a Controller? [y|N]')) {
 
             // Generate a controller resource
@@ -75,15 +50,9 @@ class EntityCommand extends CommandBase
             'name' => $this->argument('name'),
             '--fillable' => $this->option('fillable'),
             '--rules' => $this->option('rules'),
-            '--validator' => $validator,
-            '--presenter' => $presenter,
             '--force' => $this->option('force')
         ]);
 
-        $this->call('starter:bindings', [
-            'name' => $this->argument('name'),
-            '--force' => $this->option('force')
-        ]);
     }
 
 
