@@ -28,9 +28,9 @@ class LaravelRepositoryServiceProvider extends ServiceProvider
     {
     }
 
-    public static function getConfig($name)
+    public static function getConfig($name, $default = null)
     {
-        return config('laravel-repository.' . $name);
+        return config('laravel-repository.' . $name, $default);
     }
 
 }
