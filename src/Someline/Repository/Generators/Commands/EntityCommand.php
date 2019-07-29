@@ -14,7 +14,7 @@ class EntityCommand extends CommandBase
      *
      * @var string
      */
-    protected $name = 'make:entity';
+    protected $name = 'repository:entity';
 
     /**
      * The description of command.
@@ -37,21 +37,20 @@ class EntityCommand extends CommandBase
     public function fire()
     {
 
+        $this->call('repository:create', [
+            'name' => $this->argument('name'),
+            '--fillable' => $this->option('fillable'),
+            '--force' => $this->option('force')
+        ]);
+
         if ($this->confirm('Would you like to create a Controller? [y|N]')) {
 
             // Generate a controller resource
-            $this->call('starter:controller', [
+            $this->call('repository:controller', [
                 'name' => $this->argument('name'),
                 '--force' => $this->option('force')
             ]);
         }
-
-        $this->call('starter:repository', [
-            'name' => $this->argument('name'),
-            '--fillable' => $this->option('fillable'),
-            '--rules' => $this->option('rules'),
-            '--force' => $this->option('force')
-        ]);
 
     }
 

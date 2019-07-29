@@ -19,7 +19,7 @@ class RepositoryCommand extends CommandBase
      *
      * @var string
      */
-    protected $name = 'make:repository';
+    protected $name = 'repository:create';
 
     /**
      * The description of command.
@@ -50,8 +50,13 @@ class RepositoryCommand extends CommandBase
     {
         $this->generators = new Collection();
 
+        $name = $this->argument('name');
+        $name = str_replace([
+            "\\",
+            '/'
+        ], '', $name);
         $this->generators->push(new MigrationGenerator([
-            'name'   => 'create_' . snake_case(str_plural($this->argument('name'))) . '_table',
+            'name'   => 'create_' . snake_case(str_plural($name)) . '_table',
             'fields' => $this->option('fillable'),
             'force'  => $this->option('force'),
         ]));
@@ -73,6 +78,12 @@ class RepositoryCommand extends CommandBase
             "\\",
             '/'
         ], '\\', $model);
+
+        // Generate a controller resource
+        $this->call('repository:transformer', [
+            'name' => $this->argument('name'),
+            '--force' => $this->option('force')
+        ]);
 
         try {
             (new RepositoryEloquentGenerator([

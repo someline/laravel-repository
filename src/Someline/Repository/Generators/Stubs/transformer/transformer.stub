@@ -3,6 +3,7 @@
 $NAMESPACE$
 
 use $MODEL$;
+use $ROOT_NAMESPACE$\BaseTransformer;
 
 /**
  * Class $CLASS$Transformer
@@ -10,6 +11,8 @@ use $MODEL$;
  */
 class $CLASS$Transformer extends BaseTransformer
 {
+
+    protected $availableIncludes = [];
 
     /**
      * Transform the $CLASS$ entity

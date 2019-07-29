@@ -1,13 +1,14 @@
 <?php
+
 namespace Someline\Repository\Generators;
 
-use Someline\Repository\Generators\Migrations\SchemaParser;
+use Prettus\Repository\Generators\Migrations\SchemaParser;
 
 /**
- * Class RepositoryEloquentGenerator
- * @package Someline\Repository\Generators
+ * Class RepositoryInterfaceGenerator
+ * @package Prettus\Repository\Generators
  */
-class RepositoryEloquentGenerator extends Generator
+class RepositoryInterfaceGenerator extends Generator
 {
 
     /**
@@ -15,7 +16,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'repository/eloquent';
+    protected $stub = 'repository/interface';
 
     /**
      * Get root namespace.
@@ -34,7 +35,7 @@ class RepositoryEloquentGenerator extends Generator
      */
     public function getPathConfigNode()
     {
-        return 'repositories';
+        return 'interfaces';
     }
 
     /**
@@ -54,7 +55,7 @@ class RepositoryEloquentGenerator extends Generator
      */
     public function getBasePath()
     {
-        return config('repository.generator.basePath', app_path());
+        return config('repository.generator.basePath', app()->path());
     }
 
     /**
@@ -64,18 +65,8 @@ class RepositoryEloquentGenerator extends Generator
      */
     public function getReplacements()
     {
-        $repository = parent::getRootNamespace() . parent::getConfigGeneratorClassPath('interfaces') . '\\' . $this->name . 'Repository;';
-        $repository = str_replace([
-            "\\",
-            '/'
-        ], '\\', $repository);
-
         return array_merge(parent::getReplacements(), [
-            'fillable'      => $this->getFillable(),
-            'root_namespace' => parent::getRootNamespace(),
-            'repository'    => $repository,
-            'transformer' => $this->getTransformer(),
-            'model'         => isset($this->options['model']) ? $this->options['model'] : ''
+            'fillable' => $this->getFillable()
         ]);
     }
 
@@ -106,22 +97,5 @@ class RepositoryEloquentGenerator extends Generator
     public function getSchemaParser()
     {
         return new SchemaParser($this->fillable);
-    }
-
-    public function getTransformer()
-    {
-        $transformerGenerator = new TransformerGenerator([
-            'name'  => $this->name,
-            'rules' => $this->rules,
-            'force' => $this->force,
-        ]);
-
-        $transformer = $transformerGenerator->getRootNamespace() . '\\' . $transformerGenerator->getName();
-
-        return str_replace([
-                "\\",
-                '/'
-            ], '\\', $transformer) . 'Transformer';
-
     }
 }

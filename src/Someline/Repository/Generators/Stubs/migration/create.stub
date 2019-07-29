@@ -14,16 +14,14 @@ class $CLASS$ extends Migration
 	public function up()
 	{
 		Schema::create('$TABLE$', function(Blueprint $table) {
-            $table->increments('$TABLE_SINGULAR$_id');
-            $table->unsignedInteger('user_id')->index();
+            $table->bigIncrements('$TABLE_SINGULAR$_id');
+            $table->unsignedBigInteger('user_id')->index();
 
             // Adding more table related fields here...
             $FIELDS$
 
-            $table->unsignedInteger('created_by')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->ipAddress('created_ip')->nullable();
-            $table->unsignedInteger('updated_by')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->ipAddress('updated_ip')->nullable();
 		});

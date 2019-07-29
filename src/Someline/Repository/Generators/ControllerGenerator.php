@@ -42,7 +42,7 @@ class ControllerGenerator extends Generator
      */
     public function getPath()
     {
-        return $this->getBasePath() . '/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '/' . $this->getControllerName() . 'Controller.php';
+        return $this->getBasePath() . '/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '/' . $this->getName() . 'ApiController.php';
     }
 
     /**
@@ -63,7 +63,7 @@ class ControllerGenerator extends Generator
     public function getControllerName()
     {
 
-        return ucfirst($this->getPluralName());
+        return ucfirst($this->getSingularName());
     }
 
     /**
@@ -89,7 +89,6 @@ class ControllerGenerator extends Generator
             'controller' => $this->getControllerName(),
             'plural'     => $this->getPluralName(),
             'singular'   => $this->getSingularName(),
-            'validator'  => $this->getValidator(),
             'repository' => $this->getRepository(),
             'appname'    => $this->getAppNamespace(),
         ]);
@@ -104,26 +103,6 @@ class ControllerGenerator extends Generator
     {
         return str_singular(lcfirst(ucwords($this->getClass())));
     }
-
-    /**
-     * Gets validator full class name
-     *
-     * @return string
-     */
-    public function getValidator()
-    {
-        $validatorGenerator = new ValidatorGenerator([
-            'name' => $this->name,
-        ]);
-
-        $validator = $validatorGenerator->getRootNamespace() . '\\' . $validatorGenerator->getName();
-
-        return 'use ' . str_replace([
-            "\\",
-            '/'
-        ], '\\', $validator) . 'Validator;';
-    }
-
 
     /**
      * Gets repository full class name

@@ -15,8 +15,9 @@ class LaravelRepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../../config/config.php' => config_path('laravel-repository.php'),
+            __DIR__ . '/../../config/config.php' => config_path('repository.php'),
         ]);
+        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'repository');
     }
 
     /**
@@ -28,17 +29,13 @@ class LaravelRepositoryServiceProvider extends ServiceProvider
     {
         $this->commands('Someline\Repository\Generators\Commands\RepositoryCommand');
         $this->commands('Someline\Repository\Generators\Commands\TransformerCommand');
-        $this->commands('Someline\Repository\Generators\Commands\PresenterCommand');
         $this->commands('Someline\Repository\Generators\Commands\EntityCommand');
-        $this->commands('Someline\Repository\Generators\Commands\ValidatorCommand');
         $this->commands('Someline\Repository\Generators\Commands\ControllerCommand');
-        $this->commands('Someline\Repository\Generators\Commands\BindingsCommand');
-        $this->commands('Someline\Repository\Generators\Commands\CriteriaCommand');
     }
 
     public static function getConfig($name, $default = null)
     {
-        return config('laravel-repository.' . $name, $default);
+        return config('repository.' . $name, $default);
     }
 
 }

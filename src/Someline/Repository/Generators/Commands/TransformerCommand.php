@@ -3,12 +3,12 @@ namespace Someline\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Someline\Repository\Generators\ControllerGenerator;
 use Someline\Repository\Generators\FileAlreadyExistsException;
+use Someline\Repository\Generators\TransformerGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class ControllerCommand extends CommandBase
+class TransformerCommand extends CommandBase
 {
 
     /**
@@ -16,22 +16,21 @@ class ControllerCommand extends CommandBase
      *
      * @var string
      */
-    protected $name = 'repository:controller';
+    protected $name = 'repository:transformer';
 
     /**
      * The description of command.
      *
      * @var string
      */
-    protected $description = 'Create a new Restful controller.';
+    protected $description = 'Create a new transformer.';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Controller';
-
+    protected $type = 'Transformer';
 
     /**
      * Execute the command.
@@ -41,11 +40,11 @@ class ControllerCommand extends CommandBase
     public function fire()
     {
         try {
-            (new ControllerGenerator([
+            (new TransformerGenerator([
                 'name' => $this->argument('name'),
                 'force' => $this->option('force'),
             ]))->run();
-            $this->info($this->type . ' created successfully.');
+            $this->info("Transformer created successfully.");
         } catch (FileAlreadyExistsException $e) {
             $this->error($this->type . ' already exists!');
 
@@ -65,12 +64,11 @@ class ControllerCommand extends CommandBase
             [
                 'name',
                 InputArgument::REQUIRED,
-                'The name of model for which the controller is being generated.',
+                'The name of model for which the transformer is being generated.',
                 null
             ],
         ];
     }
-
 
     /**
      * The array of command options.
@@ -86,7 +84,7 @@ class ControllerCommand extends CommandBase
                 InputOption::VALUE_NONE,
                 'Force the creation if file already exists.',
                 null
-            ],
+            ]
         ];
     }
 }
