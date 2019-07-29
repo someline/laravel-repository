@@ -46,7 +46,7 @@ trait BuilderResultTrait
      */
     public function paginate($perPage = null, $columns = ['*'])
     {
-        $this->applyRules();
+        $this->applySituations();
         $this->autoIncludes();
 //        $this->applyCriteria();
 //        $this->applyScope();

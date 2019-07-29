@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Someline\Repository\Rules;
+namespace Someline\Repository\Situations;
 
 
 use Illuminate\Database\Eloquent\Builder;
@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Someline\Repository\RepositoryInterface;
+use Someline\Repository\Situations\BaseSituation;
 
-class RequestRule extends BaseRule
+class RequestSituation extends BaseSituation
 {
     /**
      * @var Request

@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use Prettus\Repository\Contracts\PresenterInterface;
 use Someline\Repository\Exceptions\RepositoryException;
 use Someline\Repository\RepositoryInterface;
-use Someline\Repository\Rules\RuleInterface;
+use Someline\Repository\Situations\SituationInterface;
 
 abstract class EloquentRepository implements RepositoryInterface
 {
@@ -53,7 +53,7 @@ abstract class EloquentRepository implements RepositoryInterface
      *
      * @var array
      */
-    protected $rules;
+    protected $situations;
 
     /**
      * @var Request
@@ -81,7 +81,7 @@ abstract class EloquentRepository implements RepositoryInterface
     public function __construct(Application $app)
     {
         $this->app = $app;
-        $this->rules = collect();
+        $this->situations = collect();
         $this->request = app('request');
         $this->makeModel();
         $this->makeQueryBuilder();
@@ -172,20 +172,20 @@ abstract class EloquentRepository implements RepositoryInterface
         return $this;
     }
 
-    public function pushRuleViaClass(string $ruleClass)
+    public function pushSituationViaClass(string $ruleClass)
     {
-        $this->rules->push(app($ruleClass));
+        $this->situations->push(app($ruleClass));
     }
 
-    public function pushRule(RuleInterface $rule)
+    public function pushSituation(SituationInterface $rule)
     {
-        $this->rules->push($rule);
+        $this->situations->push($rule);
     }
 
-    public function applyRules()
+    public function applySituations()
     {
-        foreach ($this->rules as $rule) {
-            if ($rule instanceof RuleInterface) {
+        foreach ($this->situations as $rule) {
+            if ($rule instanceof SituationInterface) {
                 $this->queryBuilder = $rule->build($this, $this->queryBuilder);
             }
         }
