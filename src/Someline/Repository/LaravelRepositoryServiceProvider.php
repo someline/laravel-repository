@@ -26,6 +26,14 @@ class LaravelRepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->commands('Someline\Repository\Generators\Commands\RepositoryCommand');
+        $this->commands('Someline\Repository\Generators\Commands\TransformerCommand');
+        $this->commands('Someline\Repository\Generators\Commands\PresenterCommand');
+        $this->commands('Someline\Repository\Generators\Commands\EntityCommand');
+        $this->commands('Someline\Repository\Generators\Commands\ValidatorCommand');
+        $this->commands('Someline\Repository\Generators\Commands\ControllerCommand');
+        $this->commands('Someline\Repository\Generators\Commands\BindingsCommand');
+        $this->commands('Someline\Repository\Generators\Commands\CriteriaCommand');
     }
 
     public static function getConfig($name, $default = null)

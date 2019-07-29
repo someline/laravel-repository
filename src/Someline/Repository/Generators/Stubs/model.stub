@@ -1,0 +1,20 @@
+<?php
+
+$NAMESPACE$
+
+$USE_BASE_MODEL$
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
+
+class $CLASS$ extends BaseModel implements Transformable
+{
+    use TransformableTrait;
+
+    protected $primaryKey = 'id';
+
+    protected $fillable = $FILLABLE$;
+
+    // Fields to be converted to Carbon object automatically
+    protected $dates = [];
+
+}
