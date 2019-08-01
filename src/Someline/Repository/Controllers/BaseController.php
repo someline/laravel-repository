@@ -16,32 +16,34 @@ class BaseApiController extends Controller
 
     public function index(Request $request)
     {
-        return $this->repository->setPresenterMeta(['b' => 123])->paginate()->handleResult(function ($result) {
-            dump($result);
-            return $result;
-        })->present();
+        return $this->repository->paginate()->present();
     }
 
     public function get(Request $request, $id)
     {
-        return $this->repository->setPresenterMeta(['b' => 123])->find($id)->present();
+        return $this->repository->find($id)->present();
     }
 
     public function save(Request $request)
     {
         $data = $request->all();
-        return $this->repository->setPresenterMeta(['b' => 123])->save($data)->present();
+        return $this->repository->save($data)->present();
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        return $this->repository->setPresenterMeta(['b' => 123])->update($id, $data)->present();
+        return $this->repository->update($id, $data)->present();
     }
 
     public function destroy(Request $request, $id)
     {
-        return $this->repository->setPresenterMeta(['b' => 123])->destroy($id)->present();
+        return $this->repository->destroy($id)->present();
+    }
+
+    public function restore(Request $request, $id)
+    {
+        return $this->repository->restore($id)->present();
     }
 
 }

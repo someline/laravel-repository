@@ -56,6 +56,12 @@ interface RepositoryInterface
     public function destroy($id);
 
     /**
+     * @param $id
+     * @return $this
+     */
+    public function restore($id);
+
+    /**
      * @param \Closure $closure
      * @return $this
      */

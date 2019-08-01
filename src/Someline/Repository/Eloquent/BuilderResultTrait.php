@@ -114,6 +114,18 @@ trait BuilderResultTrait
     }
 
     /**
+     * @param $id
+     * @return $this
+     * @throws \Exception
+     */
+    public function restore($id)
+    {
+        $model = $this->queryBuilder->withTrashed()->findOrFail($id);
+        $model->restore();
+        return $this;
+    }
+
+    /**
      * @param \Closure $closure
      * @return $this
      */
