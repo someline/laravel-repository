@@ -21,7 +21,7 @@ composer require someline/laravel-repository
 Publishing config file. 
 
 ``` bash
-php artisan vendor:publish --provider "Someline\Repository\LaravelRepositoryServiceProvider"
+php artisan vendor:publish --provider "Someline\Repository\Providers\LaravelRepositoryServiceProvider"
 ```
 
 After published, config file is `config/laravel-repository.php`.

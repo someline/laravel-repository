@@ -8,7 +8,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Someline\Repository\LaravelRepositoryServiceProvider;
+use Someline\Repository\Providers\LaravelRepositoryServiceProvider;
 use Someline\Repository\Presenters\PresenterInterface;
 
 trait BuilderResultTrait

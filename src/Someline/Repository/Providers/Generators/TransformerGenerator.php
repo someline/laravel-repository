@@ -1,5 +1,5 @@
 <?php
-namespace Someline\Repository\Generators;
+namespace Someline\Repository\Providers\Generators;
 
 /**
  * Class TransformerGenerator

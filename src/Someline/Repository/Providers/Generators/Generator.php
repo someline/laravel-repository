@@ -1,6 +1,6 @@
 <?php
 
-namespace Someline\Repository\Generators;
+namespace Someline\Repository\Providers\Generators;
 
 use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Filesystem\Filesystem;
@@ -223,7 +223,7 @@ abstract class Generator
         } else {
             $path = str_replace('/', '\\', $path);
         }
-        
+
 
         return $path;
     }

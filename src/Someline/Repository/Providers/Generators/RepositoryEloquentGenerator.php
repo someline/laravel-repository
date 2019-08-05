@@ -1,14 +1,13 @@
 <?php
+namespace Someline\Repository\Providers\Generators;
 
-namespace Someline\Repository\Generators;
-
-use Prettus\Repository\Generators\Migrations\SchemaParser;
+use Someline\Repository\Generators\Migrations\SchemaParser;
 
 /**
- * Class RepositoryInterfaceGenerator
- * @package Prettus\Repository\Generators
+ * Class RepositoryEloquentGenerator
+ * @package Someline\Repository\Generators
  */
-class RepositoryInterfaceGenerator extends Generator
+class RepositoryEloquentGenerator extends Generator
 {
 
     /**
@@ -16,7 +15,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'repository/interface';
+    protected $stub = 'repository/eloquent';
 
     /**
      * Get root namespace.
@@ -35,7 +34,7 @@ class RepositoryInterfaceGenerator extends Generator
      */
     public function getPathConfigNode()
     {
-        return 'interfaces';
+        return 'repositories';
     }
 
     /**
@@ -55,7 +54,7 @@ class RepositoryInterfaceGenerator extends Generator
      */
     public function getBasePath()
     {
-        return config('repository.generator.basePath', app()->path());
+        return config('repository.generator.basePath', app_path());
     }
 
     /**
@@ -65,8 +64,18 @@ class RepositoryInterfaceGenerator extends Generator
      */
     public function getReplacements()
     {
+        $repository = parent::getRootNamespace() . parent::getConfigGeneratorClassPath('interfaces') . '\\' . $this->name . 'Repository;';
+        $repository = str_replace([
+            "\\",
+            '/'
+        ], '\\', $repository);
+
         return array_merge(parent::getReplacements(), [
-            'fillable' => $this->getFillable()
+            'fillable'      => $this->getFillable(),
+            'root_namespace' => parent::getRootNamespace(),
+            'repository'    => $repository,
+            'transformer' => $this->getTransformer(),
+            'model'         => isset($this->options['model']) ? $this->options['model'] : ''
         ]);
     }
 
@@ -97,5 +106,22 @@ class RepositoryInterfaceGenerator extends Generator
     public function getSchemaParser()
     {
         return new SchemaParser($this->fillable);
+    }
+
+    public function getTransformer()
+    {
+        $transformerGenerator = new TransformerGenerator([
+            'name'  => $this->name,
+            'rules' => $this->rules,
+            'force' => $this->force,
+        ]);
+
+        $transformer = $transformerGenerator->getRootNamespace() . '\\' . $transformerGenerator->getName();
+
+        return str_replace([
+                "\\",
+                '/'
+            ], '\\', $transformer) . 'Transformer';
+
     }
 }

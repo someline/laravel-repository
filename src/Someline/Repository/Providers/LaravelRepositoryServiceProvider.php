@@ -1,6 +1,6 @@
 <?php
 
-namespace Someline\Repository;
+namespace Someline\Repository\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

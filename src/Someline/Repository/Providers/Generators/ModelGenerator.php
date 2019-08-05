@@ -1,6 +1,6 @@
 <?php
 
-namespace Someline\Repository\Generators;
+namespace Someline\Repository\Providers\Generators;
 
 use Someline\Repository\Generators\Migrations\SchemaParser;
 
