@@ -15,9 +15,9 @@ class LaravelRepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/config.php' => config_path('repository.php'),
+            __DIR__ . '/../../../config/config.php' => config_path('repository.php'),
         ]);
-        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'repository');
+        $this->mergeConfigFrom(__DIR__ . '/../../../config/config.php', 'repository');
     }
 
     /**
