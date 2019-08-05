@@ -3,7 +3,7 @@ namespace Someline\Repository\Providers\Generators;
 
 /**
  * Class TransformerGenerator
- * @package Someline\Repository\Generators
+ * @package Someline\Repository\Providers\Generators
  */
 
 class TransformerGenerator extends Generator

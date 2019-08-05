@@ -3,7 +3,7 @@ namespace Someline\Repository\Providers\Generators;
 
 /**
  * Class ControllerGenerator
- * @package Someline\Repository\Generators
+ * @package Someline\Repository\Providers\Generators
  */
 class ControllerGenerator extends Generator
 {

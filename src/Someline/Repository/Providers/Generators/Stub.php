@@ -4,7 +4,7 @@ namespace Someline\Repository\Providers\Generators;
 
 /**
  * Class Stub
- * @package Someline\Repository\Generators
+ * @package Someline\Repository\Providers\Generators
  */
 class Stub
 {

@@ -1,13 +1,13 @@
 <?php
-namespace Someline\Repository\Generators\Commands;
+namespace Someline\Repository\Providers\Generators\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Someline\Repository\Generators\FileAlreadyExistsException;
-use Someline\Repository\Generators\MigrationGenerator;
-use Someline\Repository\Generators\ModelGenerator;
-use Someline\Repository\Generators\RepositoryEloquentGenerator;
-use Someline\Repository\Generators\RepositoryInterfaceGenerator;
+use Someline\Repository\Providers\Generators\FileAlreadyExistsException;
+use Someline\Repository\Providers\Generators\MigrationGenerator;
+use Someline\Repository\Providers\Generators\ModelGenerator;
+use Someline\Repository\Providers\Generators\RepositoryEloquentGenerator;
+use Someline\Repository\Providers\Generators\RepositoryInterfaceGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

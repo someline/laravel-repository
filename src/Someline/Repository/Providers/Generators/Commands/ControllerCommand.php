@@ -1,10 +1,10 @@
 <?php
-namespace Someline\Repository\Generators\Commands;
+namespace Someline\Repository\Providers\Generators\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Someline\Repository\Generators\ControllerGenerator;
-use Someline\Repository\Generators\FileAlreadyExistsException;
+use Someline\Repository\Providers\Generators\ControllerGenerator;
+use Someline\Repository\Providers\Generators\FileAlreadyExistsException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

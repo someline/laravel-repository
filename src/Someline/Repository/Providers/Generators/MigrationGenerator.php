@@ -2,13 +2,13 @@
 
 namespace Someline\Repository\Providers\Generators;
 
-use Someline\Repository\Generators\Migrations\NameParser;
-use Someline\Repository\Generators\Migrations\SchemaParser;
+use Someline\Repository\Providers\Generators\Migrations\NameParser;
+use Someline\Repository\Providers\Generators\Migrations\SchemaParser;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
 /**
  * Class MigrationGenerator
- * @package Someline\Repository\Generators
+ * @package Someline\Repository\Providers\Generators
  */
 class MigrationGenerator extends Generator
 {

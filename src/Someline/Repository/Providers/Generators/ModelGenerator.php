@@ -2,11 +2,11 @@
 
 namespace Someline\Repository\Providers\Generators;
 
-use Someline\Repository\Generators\Migrations\SchemaParser;
+use Someline\Repository\Providers\Generators\Migrations\SchemaParser;
 
 /**
  * Class ModelGenerator
- * @package Someline\Repository\Generators
+ * @package Someline\Repository\Providers\Generators
  */
 class ModelGenerator extends Generator
 {
