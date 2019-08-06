@@ -4,10 +4,10 @@ $NAMESPACE$
 
 
 use Illuminate\Http\Request;
-use Someline\Repository\Controllers\BaseApiController;
+$BASE_CONTROLLER$
 $REPOSITORY$
 
-class $CLASS$ApiController extends BaseApiController
+class $CLASS$ApiController extends BaseController
 {
 
     /**

@@ -90,6 +90,7 @@ class ControllerGenerator extends Generator
             'plural'     => $this->getPluralName(),
             'singular'   => $this->getSingularName(),
             'repository' => $this->getRepository(),
+            'base_controller' => $this->getBaseController(),
             'appname'    => $this->getAppNamespace(),
         ]);
     }
@@ -121,5 +122,16 @@ class ControllerGenerator extends Generator
             "\\",
             '/'
         ], '\\', $repository) . 'Repository;';
+    }
+
+    public function getBaseController()
+    {
+
+        $controller = $this->getRootNamespace() . '\\' . 'Base';
+
+        return 'use ' . str_replace([
+            "\\",
+            '/'
+        ], '\\', $controller) . 'Controller;';
     }
 }
