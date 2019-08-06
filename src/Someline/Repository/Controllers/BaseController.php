@@ -19,12 +19,12 @@ class BaseApiController extends Controller
         return $this->repository->paginate()->present();
     }
 
-    public function get(Request $request, $id)
+    public function show(Request $request, $id)
     {
         return $this->repository->find($id)->present();
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
         $data = $request->all();
         return $this->repository->save($data)->present();
