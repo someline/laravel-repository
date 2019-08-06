@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection as SupportCollection;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
@@ -112,7 +113,7 @@ class FractalPresenter implements PresenterInterface
             throw new Exception(trans('repository::packages.league_fractal_required'));
         }
 
-        if ($data instanceof EloquentCollection) {
+        if ($data instanceof EloquentCollection || $data instanceof SupportCollection) {
             $this->resource = $this->transformCollection($data);
         } elseif ($data instanceof AbstractPaginator) {
             $this->resource = $this->transformPaginator($data);
