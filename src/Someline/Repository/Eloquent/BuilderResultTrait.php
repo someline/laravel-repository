@@ -138,6 +138,14 @@ trait BuilderResultTrait
     /**
      * @return mixed
      */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * @return mixed
+     */
     public function present()
     {
         return $this->parseResult($this->result);

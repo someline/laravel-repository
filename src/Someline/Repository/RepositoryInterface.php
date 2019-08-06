@@ -70,6 +70,11 @@ interface RepositoryInterface
     /**
      * @return mixed
      */
+    public function getResult();
+
+    /**
+     * @return mixed
+     */
     public function present();
 
     /**
