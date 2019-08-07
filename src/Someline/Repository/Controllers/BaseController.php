@@ -9,7 +9,7 @@ class BaseApiController extends Controller
 {
 
     /**
-     * @var \Someline\Repository\RepositoryInterface
+     * @var \Someline\Repository\RepositoryInterface|\Someline\Repository\SomelineRepository
      */
     protected $repository;
 
@@ -17,6 +17,11 @@ class BaseApiController extends Controller
     public function index(Request $request)
     {
         return $this->repository->paginate()->present();
+    }
+
+    public function all(Request $request)
+    {
+        return $this->repository->all()->present();
     }
 
     public function show(Request $request, $id)

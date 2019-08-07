@@ -18,6 +18,16 @@ trait BuilderTrait
 
 
     /**
+     * @param Closure $closure
+     * @return $this
+     */
+    public function useBuilder(Closure $closure)
+    {
+        $closure($this->queryBuilder);
+        return $this;
+    }
+
+    /**
      * Add a where clause on the primary key to the query.
      *
      * @param mixed $id
@@ -67,6 +77,36 @@ trait BuilderTrait
     public function orWhere($column, $operator = null, $value = null)
     {
         $this->queryBuilder->orWhere($column, $operator, $value);
+        return $this;
+    }
+
+    /**
+     * Add a "where in" clause to the query.
+     *
+     * @param string $column
+     * @param mixed $values
+     * @param string $boolean
+     * @param bool $not
+     * @return $this
+     */
+    public function whereIn($column, $values, $boolean = 'and', $not = false)
+    {
+        $this->queryBuilder->whereIn($column, $values, $boolean, $not);
+        return $this;
+    }
+
+
+    /**
+     * Add a "where not in" clause to the query.
+     *
+     * @param string $column
+     * @param mixed $values
+     * @param string $boolean
+     * @return $this
+     */
+    public function whereNotIn($column, $values, $boolean = 'and')
+    {
+        $this->queryBuilder->whereNotIn($column, $values, $boolean);
         return $this;
     }
 

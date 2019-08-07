@@ -34,6 +34,22 @@ trait BuilderResultTrait
     protected $isHandledResult = false;
 
     /**
+     * @param array $columns
+     * @return $this
+     */
+    public function all($columns = ['*'])
+    {
+        $this->applySituations();
+        $this->autoIncludes();
+//        $this->applyCriteria();
+//        $this->applyScope();
+        $results = $this->queryBuilder->get($columns);
+//        $this->resetModel();
+        $this->result = $results;
+        return $this;
+    }
+
+    /**
      * Paginate the given query.
      *
      * @param int $perPage

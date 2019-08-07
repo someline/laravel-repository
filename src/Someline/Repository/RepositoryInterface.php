@@ -14,6 +14,12 @@ interface RepositoryInterface
     public function setPresenterMeta(array $meta);
 
     /**
+     * @param array $columns
+     * @return $this
+     */
+    public function all($columns = ['*']);
+
+    /**
      * Paginate the given query.
      *
      * @param int $perPage
