@@ -32,13 +32,20 @@ class BaseApiController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data = $this->handleData($request, $data);
         return $this->repository->save($data)->present();
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        $data = $this->handleData($request, $data, $id);
         return $this->repository->update($id, $data)->present();
+    }
+
+    protected function handleData(Request $request, $data, $id = null): array
+    {
+        return $data;
     }
 
     public function destroy(Request $request, $id)
